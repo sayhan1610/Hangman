@@ -56,7 +56,7 @@ function startGame(words) {
 
     // Check game status
     if (remainingLetters === 0) {
-      messageDiv.textContent = 'You win!';
+      messageDiv.textContent = 'You win! Reload the page to play again.';
       disableButtons();
     } else if (remainingAttempts === 0) {
       messageDiv.textContent = `You lose! The word was "${word}".`;
