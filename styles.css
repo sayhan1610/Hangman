@@ -13,6 +13,10 @@ h1 {
   color: #333;
 }
 
+#imageContainer {
+  margin-bottom: 20px;
+}
+
 #wordContainer {
   font-size: 2rem;
   margin-bottom: 20px;
@@ -59,4 +63,148 @@ h1 {
 #wrongLetters {
   color: #d9534f;
   font-size: 1rem;
+}
+
+img {
+  height: 100px;
+  width: auto;
+}
+.btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 1em 2em;
+  font-size: 15px;
+  font-weight: bold;
+  border-width: 0;
+  border-radius: 1.5em;
+  text-transform: uppercase;
+  transition: 0.2s ease;
+}
+
+.text {
+  font-size: 1.2em;
+  color: white;
+  z-index: 1;
+}
+
+.btn::before {
+  position: absolute;
+  content: "";
+  width: 120%;
+  height: 260%;
+  background-image: linear-gradient(
+    135deg,
+    rgba(0, 5, 255, 1) 0%,
+    rgb(0, 255, 119) 100%
+  );
+}
+
+.btn::after {
+  position: absolute;
+  content: "";
+  width: 88%;
+  height: 80%;
+  border-width: 0;
+  border-radius: 1.2em;
+  background-color: black;
+  opacity: 0.7;
+  transition: 100ms ease;
+}
+
+.btn:hover.btn {
+  transform: scale(1.1);
+}
+
+.btn:hover.btn::after {
+  opacity: 0.5;
+}
+
+.btn:hover.btn::before {
+  animation: turn_4810 0.4s infinite linear;
+}
+
+.btn:active.btn {
+  transform: scale(1.05);
+}
+
+.btn:active.btn::before {
+  transform: scale(1.05);
+  animation: turn_4810 0.2s infinite linear;
+}
+
+@keyframes turn_4810 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      50% 50% at 100% 0,
+      #ca3f3f 0% 5%,
+      #ffffff 6% 15%,
+      #ca3f3f 16% 25%,
+      #ffffff 26% 35%,
+      #ca3f3f 36% 45%,
+      #ffffff 46% 55%,
+      #ca3f3f 56% 65%,
+      #ffffff 66% 75%,
+      #ca3f3f 76% 85%,
+      #ffffff 86% 95%,
+      #0000 96%
+    ),
+    radial-gradient(
+      50% 50% at 0 100%,
+      #ca3f3f 0% 5%,
+      #ffffff 6% 15%,
+      #ca3f3f 16% 25%,
+      #ffffff 26% 35%,
+      #ca3f3f 36% 45%,
+      #ffffff 46% 55%,
+      #ca3f3f 56% 65%,
+      #ffffff 66% 75%,
+      #ca3f3f 76% 85%,
+      #ffffff 86% 95%,
+      #0000 96%
+    ),
+    radial-gradient(
+      50% 50%,
+      #ca3f3f 0% 5%,
+      #ffffff 6% 15%,
+      #ca3f3f 16% 25%,
+      #ffffff 26% 35%,
+      #ca3f3f 36% 45%,
+      #ffffff 46% 55%,
+      #ca3f3f 56% 65%,
+      #ffffff 66% 75%,
+      #ca3f3f 76% 85%,
+      #ffffff 86% 95%,
+      #0000 96%
+    ),
+    radial-gradient(
+        50% 50%,
+        #ca3f3f 0% 5%,
+        #ffffff 6% 15%,
+        #ca3f3f 16% 25%,
+        #ffffff 26% 35%,
+        #ca3f3f 36% 45%,
+        #ffffff 46% 55%,
+        #ca3f3f 56% 65%,
+        #ffffff 66% 75%,
+        #ca3f3f 76% 85%,
+        #ffffff 86% 95%,
+        #0000 96%
+      )
+      38px 38px;
+  background-size: 76px 76px;
+  background-color: #ca3f3f;
 }

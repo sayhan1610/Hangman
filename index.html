@@ -8,10 +8,19 @@
   </head>
   <body>
     <h1>Hangman Game</h1>
+    <div id="imageContainer">
+      <img id="hangmanImage" src="images/0.png" alt="Hangman" />
+    </div>
     <div id="wordContainer"></div>
     <div id="message"></div>
     <div id="letters"></div>
     <div id="wrongLetters"></div>
+    <button id="playButton" class="btn" onclick="initGame()">
+      <span class="text">Play</span>
+    </button>
+    <button id="playAgainButton" onclick="initGame()" style="display: none">
+      Play Again
+    </button>
     <script src="script.js"></script>
   </body>
 </html>
