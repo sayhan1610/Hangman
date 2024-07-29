@@ -5,7 +5,6 @@ body,
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   margin: 0;
 }
 
@@ -150,53 +149,23 @@ img {
   height: 100%;
   /* Add your background pattern here */
   --s: 25px; /* control the size */
-  --c1: #1eaaee;
-  --c2: #fff;
+  --c1: orange;
+  --c2: black;
 
   --c: #0000 71%, var(--c1) 0 79%, #0000 0;
   --_s: calc(var(--s) / 2) / calc(2 * var(--s)) calc(2 * var(--s));
   background: linear-gradient(45deg, var(--c)) calc(var(--s) / -2) var(--_s),
     linear-gradient(135deg, var(--c)) calc(var(--s) / 2) var(--_s),
     radial-gradient(var(--c1) 35%, var(--c2) 37%) 0 0 / var(--s) var(--s);
+  animation: scaleBGbackandforth 5s infinite;
 }
+
 .cc {
+  background-image: radial-gradient(circle, wheat, transparent 20%, grey);
+  background-size: cover;
+  background-repeat: no-repeat;
   background-color: wheat;
-  height: auto;
-  min-height: 400px;
   border-radius: 20px;
-  width: auto;
-  min-width: 400px;
-}
-
-#wordContainer,
-#wrongLetters,
-h1,
-#message {
-  background-color: wheat;
-  padding: 2%;
-  border-radius: 15px;
-  margin-bottom: 10px;
-}
-
-.cc {
-  --s: 15px; /* control the size */
-  --t: 2px; /* control the thickness */
-  --c1: #084c7f;
-  --c2: #fef5e9;
-
-  --_c: #0000 calc(98% - var(--t)), var(--c1) calc(100% - var(--t)) 98%, #0000;
-  --_s: calc(2 * var(--s)) calc(5 * var(--s) / 2);
-  --_r0: /var(--_s) radial-gradient(calc(var(--s) / 2) at 0 20%, var(--_c));
-  --_r1: /var(--_s) radial-gradient(calc(var(--s) / 2) at 100% 20%, var(--_c));
-  background: 0 0 var(--_r0),
-    calc(-1 * var(--s)) calc(5 * var(--s) / 4) var(--_r0), var(--s) 0 var(--_r1),
-    0 calc(5 * var(--s) / 4) var(--_r1),
-    conic-gradient(at var(--t) calc(20% + 2 * var(--t)), #0000 75%, var(--c1) 0)
-      calc(var(--t) / -2) calc(var(--s) - var(--t)) / var(--s)
-      calc(5 * var(--s) / 4),
-    repeating-conic-gradient(var(--c2) 0 25%, #0000 0 50%) var(--s)
-      calc(var(--s) / -8) / var(--_s),
-    conic-gradient(from 90deg at var(--t) var(--t), var(--c2) 25%, var(--c1) 0)
-      calc((var(--s) - var(--t)) / 2) calc((var(--s) - var(--t)) / 2) / var(--s)
-      calc(5 * var(--s) / 4);
+  min-width: 500px;
+  min-height: 500px;
 }

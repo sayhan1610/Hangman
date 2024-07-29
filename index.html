@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="background" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,7 +23,19 @@
       <button id="playAgainButton" onclick="initGame()" style="display: none">
         Play Again
       </button>
+      <button id="revealButton" onclick="revealLetter()" style="display: none">
+        Reveal Letter
+      </button>
     </div>
+    <audio id="correctSound" src="/sounds/correct.mp3"></audio>
+    <audio id="failSound" src="/sounds/fail.mp3"></audio>
+    <audio id="keySound1" src="/sounds/key1.mp3"></audio>
+    <audio id="keySound2" src="/sounds/key2.mp3"></audio>
+    <audio id="keySound3" src="/sounds/key3.mp3"></audio>
+    <audio id="keySound4" src="/sounds/key4.mp3"></audio>
+    <audio id="playSound" src="/sounds/play.mp3"></audio>
+    <audio id="loopSound" src="/sounds/loop.mp3" loop></audio>
+    <audio id="startSound" src="/sounds/start.mp3"></audio>
     <script src="script.js"></script>
   </body>
 </html>
