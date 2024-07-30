@@ -104,6 +104,7 @@ function checkGameStatus() {
 
   if (remainingLetters === 0) {
     messageDiv.textContent = 'You win! Click "Play Again" to restart.';
+    messageDiv.style.color = 'green'; // Set win message color to green
     disableButtons();
     playAgainButton.style.display = 'block';
     revealButton.style.display = 'none';
@@ -111,6 +112,7 @@ function checkGameStatus() {
     playSound('correctSound'); // Play correct sound after winning
   } else if (remainingAttempts === 0) {
     messageDiv.textContent = `You lose! The word was "${word}". Click "Play Again" to restart.`;
+    messageDiv.style.color = 'red'; // Set lose message color to red
     disableButtons();
     playAgainButton.style.display = 'block';
     revealButton.style.display = 'none';
@@ -118,6 +120,7 @@ function checkGameStatus() {
     playSound('failSound'); // Play fail sound after losing
   }
 }
+
 
 function disableButtons() {
   const buttons = document.getElementById('letters').getElementsByTagName('button');

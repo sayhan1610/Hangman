@@ -11,7 +11,7 @@
     <div class="cc">
       <h1>Hangman Game</h1>
       <div id="imageContainer">
-        <img id="hangmanImage" src="images/0.png" alt="Hangman" />
+        <img id="hangmanImage" src="images/6.png" alt="Hangman" />
       </div>
       <div id="wordContainer"></div>
       <div id="message"></div>
@@ -20,11 +20,12 @@
       <button id="playButton" class="btn" onclick="initGame()">
         <span class="text">Play</span>
       </button>
+
       <button id="playAgainButton" onclick="initGame()" style="display: none">
-        Play Again
+        <span class="playAgainSpan">Play Again</span>
       </button>
       <button id="revealButton" onclick="revealLetter()" style="display: none">
-        Reveal Letter
+        <span class="Hovertext">Reveal Letter</span><span>Only 2x</span>
       </button>
     </div>
     <audio id="correctSound" src="/sounds/correct.mp3"></audio>

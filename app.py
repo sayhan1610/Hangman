@@ -1,38 +1,20 @@
-import http.server
-import socketserver
-import webbrowser
-import threading
-import signal
-import sys
+from flask import Flask, send_from_directory, render_template_string
+from threading import Thread
 
-PORT = 5500
-URL = f"http://127.0.0.1:{PORT}"
+app = Flask(__name__, static_url_path='/', static_folder='/')
 
-class OpenBrowser(threading.Thread):
-    def run(self):
-        webbrowser.open(URL)
+@app.route('/')
+def index():
+    with open('index.html') as f:
+        return render_template_string(f.read())
 
-Handler = http.server.SimpleHTTPRequestHandler
+@app.route('/<path:path>')
+def static_files(path):
+    return send_from_directory('.', path)
 
-def run_server():
-    with socketserver.TCPServer(("", PORT), Handler) as httpd:
-        print(f"Serving at {URL}")
-        try:
-            httpd.serve_forever()
-        except KeyboardInterrupt:
-            print("\nServer stopped by user.")
-        finally:
-            httpd.server_close()
-            print("Server closed.")
+def run():
+    app.run(host='0.0.0.0', port=8080)
 
-def signal_handler(sig, frame):
-    print("\nSignal received, stopping server.")
-    sys.exit(0)
-
-if __name__ == "__main__":
-    # Set up signal handling for a graceful shutdown
-    signal.signal(signal.SIGINT, signal_handler)  # Handle Ctrl+C
-    signal.signal(signal.SIGTERM, signal_handler)  # Handle termination signals
-
-    OpenBrowser().start()  # Start the browser in a new thread.
-    run_server()  # Start the server.
+if __name__ == '__main__':
+    server = Thread(target=run)
+    server.start()

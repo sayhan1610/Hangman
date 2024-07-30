@@ -23,9 +23,9 @@ h1 {
 }
 
 #message {
-  margin-top: 20px;
   font-size: 1.5rem;
-  color: #d9534f;
+  margin: 20px;
+  margin-bottom: 20px;
 }
 
 #letters {
@@ -52,6 +52,21 @@ h1 {
 #letters button:hover {
   background-color: #0056b3;
   transform: scale(1.1);
+
+  animation: neonLights 1.5s infinite alternate;
+}
+
+@keyframes neonLights {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #007bff,
+      0 0 60px #007bff, 0 0 70px #007bff, 0 0 80px #007bff, 0 0 100px #007bff;
+    box-shadow: 0 0 5px #fff, 0 0 10px #007bff, 0 0 15px #007bff;
+  }
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #007bff,
+      0 0 30px #007bff, 0 0 40px #007bff, 0 0 50px #007bff, 0 0 60px #007bff;
+    box-shadow: 0 0 3px #fff, 0 0 6px #007bff, 0 0 10px #007bff;
+  }
 }
 
 #letters button:disabled {
@@ -68,6 +83,7 @@ img {
   height: 100px;
   width: auto;
 }
+
 .btn {
   position: relative;
   display: flex;
@@ -81,6 +97,49 @@ img {
   border-radius: 1.5em;
   text-transform: uppercase;
   transition: 0.2s ease;
+}
+
+#playAgainButton {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  background: #fff;
+  border: none;
+  padding: 10px 20px;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  width: 120px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: skew(-21deg);
+}
+
+.playAgainSpan {
+  display: inline-block;
+  transform: skew(21deg);
+}
+
+#playAgainButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  left: 0;
+  background: rgb(20, 20, 20);
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+#playAgainButton:hover {
+  color: #fff;
+}
+
+#playAgainButton:hover::before {
+  left: 0;
+  right: 0;
+  opacity: 1;
 }
 
 .text {
@@ -147,7 +206,6 @@ img {
 .background {
   width: 100%;
   height: 100%;
-  /* Add your background pattern here */
   --s: 25px; /* control the size */
   --c1: orange;
   --c2: black;
@@ -159,7 +217,27 @@ img {
     radial-gradient(var(--c1) 35%, var(--c2) 37%) 0 0 / var(--s) var(--s);
   animation: scaleBGbackandforth 5s infinite;
 }
+img:hover {
+  animation: shakeVigorously 10ms linear infinite;
+}
 
+@keyframes shakeVigorously {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
 .cc {
   background-image: radial-gradient(circle, wheat, transparent 20%, grey);
   background-size: cover;
@@ -168,4 +246,89 @@ img {
   border-radius: 20px;
   min-width: 500px;
   min-height: 500px;
+  box-sizing: border-box; /* Ensures padding and borders are included in width and height */
+  overflow: hidden; /* Prevents content from spilling outside */
+}
+
+#revealButton {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #18181a;
+  color: #18181a;
+  display: inline-block;
+  font-size: 15px;
+  line-height: 15px;
+  padding: 18px 18px 17px;
+  text-decoration: none;
+  cursor: pointer;
+  background: #fff;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 20px;
+}
+
+#revealButton span:first-child {
+  position: relative;
+  transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 10;
+}
+
+#revealButton span:last-child {
+  color: white;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 100;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  transform: translateY(225%) translateX(-50%);
+  height: 14px;
+  line-height: 13px;
+}
+
+#revealButton:after {
+  content: "";
+  position: absolute;
+  bottom: -50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  transform-origin: bottom center;
+  transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  transform: skewY(9.3deg) scaleY(0);
+  z-index: 50;
+}
+
+#revealButton:hover:after {
+  transform-origin: bottom center;
+  transform: skewY(9.3deg) scaleY(2);
+}
+
+#revealButton:hover span:last-child {
+  transform: translateX(-50%) translateY(-50%);
+  opacity: 1;
+  transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+}
+/* Media queries for responsive design */
+
+@media (max-width: 768px) {
+  .cc {
+    min-width: 300px;
+    min-height: 600px;
+    max-width: 80%;
+    max-height: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cc {
+    min-width: 300px;
+    min-height: 600px;
+    max-width: 80%;
+    max-width: 80%;
+  }
 }
